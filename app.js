@@ -20,37 +20,51 @@ app.use(async (req, res, next) => {
   } else {
     let status = undefined
     if (req.method == 'GET') {
-      const request = await fetch('http://' + process.env.FORWARDING_ADDRESS + req.url, {
-        headers: {'Content-Type': 'application/json'},
-        method: req.method,
-      }).then((response) => {
-        status = response.status
-        return response.json();
-      })
-      return res.status(status).json(request)
+      try {
+        const request = await fetch('http://' + process.env.FORWARDING_ADDRESS + req.url, {
+          headers: {'Content-Type': 'application/json'},
+          method: req.method,
+          timeout: 10000
+        }).then((response) => {
+          status = response.status
+          return response.json();
+        })
+        return res.status(status).json(request)
+      } catch(error) {
+        return res.status(503).json({"error": "upstream down", "upstream": process.env.FORWARDING_ADDRESS})
+      }
     }
     else if (req.method == 'DELETE') {
-      const request = await fetch('http://' + process.env.FORWARDING_ADDRESS + req.url, {
-        headers: {'Content-Type': 'application/json'},
-        method: req.method,
-      }).then((response) => {
-        status = response.status
-        return response.json();
-      })
-      return res.status(status).json(request)
+      try {
+        const request = await fetch('http://' + process.env.FORWARDING_ADDRESS + req.url, {
+          headers: {'Content-Type': 'application/json'},
+          method: req.method,
+          timeout: 10000
+        }).then((response) => {
+          status = response.status
+          return response.json();
+        })
+        return res.status(status).json(request)
+      } catch(error) {
+        return res.status(503).json({"error": "upstream down", "upstream": process.env.FORWARDING_ADDRESS})
+      }
     }
     else if (req.method == 'PUT') {
-      // console.log(req.body)
-      const request = await fetch('http://' + process.env.FORWARDING_ADDRESS + req.url, {
-        headers: {'Content-Type': 'application/json'},
-        method: req.method,
-        body: JSON.stringify(req.body)
-        // body: JSON.stringify({key : req.body.key, val : req.body.val})
-      }).then((response) => {
-        status = response.status
-        return response.json();
-      })
-      return res.status(status).json(request)
+      try {
+        const request = await fetch('http://' + process.env.FORWARDING_ADDRESS + req.url, {
+          headers: {'Content-Type': 'application/json'},
+          method: req.method,
+          body: JSON.stringify(req.body),
+          // body: JSON.stringify({key : req.body.key, val : req.body.val})
+          timeout: 10000
+        }).then((response) => {
+          status = response.status
+          return response.json();
+        })
+        return res.status(status).json(request)
+      } catch(error) {
+        return res.status(503).json({"error": "upstream down", "upstream": process.env.FORWARDING_ADDRESS})
+      }
     }
   }
 })
