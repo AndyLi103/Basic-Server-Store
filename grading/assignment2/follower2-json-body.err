@@ -1,0 +1,54 @@
+FF...EFF..F
+======================================================================
+ERROR: test_multiple_kvs (__main__.TestAssignment2.test_multiple_kvs)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/amin/Downloads/CSE 138/Assignment_2/grading/test_assignment2_json-body.py", line 163, in test_multiple_kvs
+    self.assertEqual(res.json()['val'], vals[0], 'Bad value for key 0 (multiple key-values)')
+                     ~~~~~~~~~~^^^^^^^
+KeyError: 'val'
+
+======================================================================
+FAIL: test_delete_nonexistent (__main__.TestAssignment2.test_delete_nonexistent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/amin/Downloads/CSE 138/Assignment_2/grading/test_assignment2_json-body.py", line 101, in test_delete_nonexistent
+    self.assertEqual(res.status_code, 404, msg='Did not return status 404 (delete non-existent key)')
+AssertionError: 400 != 404 : Did not return status 404 (delete non-existent key)
+
+======================================================================
+FAIL: test_get_nonexistent (__main__.TestAssignment2.test_get_nonexistent)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/amin/Downloads/CSE 138/Assignment_2/grading/test_assignment2_json-body.py", line 92, in test_get_nonexistent
+    self.assertEqual(res.status_code, 404, msg='Did not return status 404 (get non-existent key)')
+AssertionError: 400 != 404 : Did not return status 404 (get non-existent key)
+
+======================================================================
+FAIL: test_put_delete_get (__main__.TestAssignment2.test_put_delete_get)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/amin/Downloads/CSE 138/Assignment_2/grading/test_assignment2_json-body.py", line 146, in test_put_delete_get
+    self.assertEqual(res.status_code, 200, msg='Did not return status 200 (put-delete-get: delete)')
+AssertionError: 400 != 200 : Did not return status 200 (put-delete-get: delete)
+
+======================================================================
+FAIL: test_put_get (__main__.TestAssignment2.test_put_get)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/amin/Downloads/CSE 138/Assignment_2/grading/test_assignment2_json-body.py", line 110, in test_put_get
+    self.assertEqual(res.status_code, 201, msg='Did not return status 201 (simple put then get: put)')
+AssertionError: 200 != 201 : Did not return status 201 (simple put then get: put)
+
+======================================================================
+FAIL: test_put_replace_get (__main__.TestAssignment2.test_put_replace_get)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/amin/Downloads/CSE 138/Assignment_2/grading/test_assignment2_json-body.py", line 135, in test_put_replace_get
+    self.assertEqual(res.status_code, 200, msg='Did not return status 200 (put-replace-get: get)')
+AssertionError: 400 != 200 : Did not return status 200 (put-replace-get: get)
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.420s
+
+FAILED (failures=5, errors=1)

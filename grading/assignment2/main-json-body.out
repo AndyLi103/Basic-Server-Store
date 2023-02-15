@@ -1,0 +1,3 @@
+Ran json-body tests against http://localhost:1005/kvs
+fail	error	skip	total	ok
+5	1	0	11	False

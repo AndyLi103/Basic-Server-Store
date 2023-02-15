@@ -1,0 +1,3 @@
+Ran follower-error tests against http://localhost:2005/kvs
+fail	error	skip	total	ok
+0	1	0	8	False
