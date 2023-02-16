@@ -49,6 +49,6 @@ Traceback (most recent call last):
 AssertionError: 400 != 200 : Did not return status 200 (put-replace-get: get)
 
 ----------------------------------------------------------------------
-Ran 11 tests in 0.551s
+Ran 11 tests in 0.305s
 
 FAILED (failures=5, errors=1)
